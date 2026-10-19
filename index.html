@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="mn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enguun-д 💌</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: #ffeaf2;
+            color: #743653;
+        }
+
+        .card {
+            width: 320px;
+            max-width: 85%;
+            padding: 28px 20px;
+            text-align: center;
+            background: white;
+            border-radius: 28px;
+            box-shadow: 0 10px 35px #e9a4bf55;
+        }
+
+        .cat {
+            font-size: 90px;
+            margin: 10px 0;
+        }
+
+        h1 {
+            color: #ec6598;
+            font-size: 27px;
+        }
+
+        .question {
+            font-size: 23px;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 12px;
+            border: none;
+            border-radius: 30px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #yes {
+            background: #f477a5;
+            color: white;
+        }
+
+        #no {
+            background: #fff0f5;
+            color: #a44b72;
+        }
+
+        #answer {
+            display: none;
+            margin-top: 22px;
+            font-size: 23px;
+            font-weight: bold;
+            color: #ec6598;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="cat">❤️💍❤️</div>
+
+        <h1>Enguun минь 💌</h1>
+
+        <p class="question">
+            Миний найз охин болох уу?
+        </p>
+
+        <button id="yes">Тийм, зөвшөөрье 💗</button>
+        <button id="no">Бодож үзий 🙈</button>
+
+        <div id="answer"></div>
+    </div>
+
+    <script>
+        const yesButton = document.getElementById("yes");
+        const noButton = document.getElementById("no");
+        const answer = document.getElementById("answer");
+
+        async function sendAnswer(choice) {
+            try {
+                const response = await fetch(
+                    "https://formsubmit.co/ajax/tumbash81@gmail.com",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+                        body: JSON.stringify({
+                            _subject: "💌 Enguun-ийн урилгын хариулт",
+                            answer: choice,
+                            message: "Enguun-ийн хариулт: " + choice
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Email failed");
+                }
+
+                return true;
+            } catch (error) {
+                return false;
+            }
+        }
+
+        async function chooseAnswer(choice) {
+            yesButton.disabled = true;
+            noButton.disabled = true;
+
+            if (choice === "Тийм") {
+                answer.innerHTML = "Хайртай шүү, Энгүүн ❤️❤️❤️";
+            } else {
+                answer.innerHTML =
+                    "Зүгээр ээ 😊 Үнэнээ хэлсэнд баярлалаа ❤️";
+            }
+
+            answer.style.display = "block";
+
+            const sent = await sendAnswer(choice);
+
+            const status = document.createElement("p");
+            status.style.fontSize = "13px";
+            status.textContent = sent
+                ? "Хариулт илгээх хүсэлт амжилттай боллоо 💌"
+                : "Илгээж чадсангүй. Интернет болон тохиргоогоо шалгаарай.";
+            answer.appendChild(status);
+        }
+
+        yesButton.addEventListener("click", () => chooseAnswer("Тийм"));
+        noButton.addEventListener("click", () => chooseAnswer("Бодож үзий"));
+    </script>
+</body>
+
+</html>
