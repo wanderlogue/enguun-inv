@@ -7,6 +7,20 @@
     <title>Enguun-д 💌</title>
 
     <style>
+        .kitty-sticker {
+            text-align: center;
+            margin: 0 auto 20px;
+        }
+
+        .kitty-image {
+            width: 220px;
+            max-width: 75%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 6px 12px #f3a6cf66);
+        }
+
         body {
             margin: 0;
             min-height: 100vh;
@@ -19,13 +33,48 @@
         }
 
         .card {
-            width: 320px;
-            max-width: 85%;
-            padding: 28px 20px;
+            position: relative;
+            width: min(100%, 440px);
+            margin: 24px auto;
+            padding: 30px 22px;
             text-align: center;
-            background: white;
-            border-radius: 28px;
-            box-shadow: 0 10px 35px #e9a4bf55;
+
+            background: linear-gradient(160deg,
+                    #fffafd 0%,
+                    #fff0f7 55%,
+                    #ffe3f0 100%);
+
+            border: 4px solid #fff;
+            border-radius: 36px;
+            outline: 2px solid #ffc1dc;
+
+            box-shadow:
+                0 10px 25px #e98ab844,
+                inset 0 0 0 3px #ffe1ef;
+
+            overflow: visible;
+        }
+
+        /* Cute sticker decorations */
+        .card::before {
+            content: "♡  ✧  ♡";
+            position: absolute;
+            top: -18px;
+            right: 18px;
+            padding: 3px 12px;
+            border-radius: 20px;
+            background: #ffdeed;
+            color: #e86ba6;
+            font-size: 20px;
+        }
+
+        .card::after {
+            content: "🐾";
+            position: absolute;
+            bottom: -18px;
+            left: 18px;
+            font-size: 27px;
+            transform: rotate(-18deg);
         }
 
         .cat {
@@ -72,14 +121,55 @@
             font-weight: bold;
             color: #ec6598;
         }
+
+        /* Cute kitty sticker */
+        .kitty-sticker {
+            width: 145px;
+            height: 145px;
+            margin: 0 auto 18px;
+            border-radius: 42% 42% 45% 45%;
+            background: linear-gradient(145deg, #fff5fb, #ffd9ed);
+            border: 4px solid white;
+            box-shadow: 0 6px 18px #f3a6cf66;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: rotate(-4deg);
+            position: relative;
+        }
+
+        .kitty-face {
+            font-size: 76px;
+            line-height: 1.1;
+            filter: drop-shadow(0 3px 2px #e9a4c2);
+        }
+
+        .kitty-caption {
+            font-size: 15px;
+            color: #d85c98;
+            font-weight: bold;
+            margin-top: 4px;
+        }
+
+        .kitty-heart {
+            position: absolute;
+            top: -13px;
+            right: -9px;
+            font-size: 32px;
+            transform: rotate(12deg);
+        }
     </style>
 </head>
 
 <body>
+    <div class="kitty-sticker">
+        <img src="kitty-sticker.png" alt="Enguun-д зориулсан хөөрхөн муур" class="kitty-image">
+    </div>
     <div class="card">
         <div class="cat">❤️💍❤️</div>
 
-        <h1>Enguun минь 💌</h1>
+        <h1>For Enguun 💌</h1>
 
         <p class="question">
             Миний найз охин болох уу?
